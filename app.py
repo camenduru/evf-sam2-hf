@@ -1,3 +1,4 @@
+import spaces
 import gradio as gr
 from inference import sam_preprocess, beit3_preprocess
 from model.evf_sam import EvfSamModel
@@ -5,7 +6,6 @@ from transformers import AutoTokenizer
 import torch
 import numpy as np
 import sys
-import spaces
 
 version = "YxZhang/evf-sam"
 model_type = "ori"
@@ -55,6 +55,8 @@ def pred(image_np, prompt):
 
     return visualization / 255.0, pred_mask.astype(np.float16)
 
+desc_title_str = '<div align ="center"><img src="assets/logo.jpg" width="20%"><h3> Early Vision-Language Fusion for Text-Prompted Segment Anything Model </h3></div>'
+desc_link_str = '[![arxiv paper](https://img.shields.io/badge/arXiv-Paper-red)](https://arxiv.org/abs/2406.20076)'
 
 demo = gr.Interface(
     fn=pred,
@@ -76,7 +78,8 @@ demo = gr.Interface(
                   "assets/carrots.jpg",
                   "3carrots in center with ice and greenn leaves"
               ]],
-    title="EVF-SAM referring expression segmentation",
+    title="EVF-SAM: Referring Expression Segmentation",
+    description=desc_title_str + desc_link_str,
     allow_flagging="never")
 # demo.launch()
 demo.launch(share=False, server_name="0.0.0.0", server_port=10001)
