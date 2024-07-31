@@ -1,4 +1,8 @@
 import spaces
+from pip._internal import main
+main(['install', 'timm==1.0.8'])
+import timm
+print("installed", timm.__version__)
 import gradio as gr
 from inference import sam_preprocess, beit3_preprocess
 from model.evf_sam import EvfSamModel
@@ -7,11 +11,6 @@ import torch
 import numpy as np
 import sys
 import os
-from pip._internal import main
-main(['install', 'timm==1.0.8'])
-import timm
-print("installed", timm.__version__)
-
 version = "YxZhang/evf-sam"
 model_type = "ori"
 
