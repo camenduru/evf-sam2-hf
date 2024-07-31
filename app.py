@@ -55,8 +55,17 @@ def pred(image_np, prompt):
 
     return visualization / 255.0, pred_mask.astype(np.float16)
 
-desc_title_str = '<div align ="center"><img src="assets/logo.jpg" width="20%"><h3> Early Vision-Language Fusion for Text-Prompted Segment Anything Model </h3></div>'
-desc_link_str = '[![arxiv paper](https://img.shields.io/badge/arXiv-Paper-red)](https://arxiv.org/abs/2406.20076)'
+
+desc = """
+<div><h3>EVF-SAM: Early Vision-Language Fusion for Text-Prompted Segment Anything Model</h3>
+<p>EVF-SAM extends SAM's capabilities with text-prompted segmentation, achieving high accuracy in Referring Expression Segmentation.</p></div>
+<div style='display:flex; gap: 0.25rem; align-items: center'><a href="https://arxiv.org/abs/2406.20076"><img src="https://img.shields.io/badge/arXiv-Paper-red"></a><a href="https://github.com/hustvl/EVF-SAM"><img src="https://img.shields.io/badge/GitHub-Code-blue"></a></div>
+"""
+
+
+
+# desc_title_str = '<div align ="center"><img src="assets/logo.jpg" width="20%"><h3> Early Vision-Language Fusion for Text-Prompted Segment Anything Model</h3></div>'
+# desc_link_str = '[![arxiv paper](https://img.shields.io/badge/arXiv-Paper-red)](https://arxiv.org/abs/2406.20076)'
 
 demo = gr.Interface(
     fn=pred,
@@ -78,9 +87,8 @@ demo = gr.Interface(
                   "assets/carrots.jpg",
                   "3carrots in center with ice and greenn leaves"
               ]],
-    title="EVF-SAM: Referring Expression Segmentation",
-    description=desc_title_str + desc_link_str,
-    cache_examples=False,
+    title="📷 EVF-SAM: Referring Expression Segmentation",
+    description=desc,
     allow_flagging="never")
 # demo.launch()
 demo.launch()
