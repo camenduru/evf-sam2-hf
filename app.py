@@ -7,7 +7,8 @@ import torch
 import numpy as np
 import sys
 import os
-os.system('pip install timm --upgrade')
+from pip._internal import main
+main(['install', 'timm', '--upgrade'])
 
 version = "YxZhang/evf-sam"
 model_type = "ori"
