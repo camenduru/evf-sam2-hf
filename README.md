@@ -1,5 +1,5 @@
 ---
-title: Evf Sam
+title: EVF-SAM
 emoji: 👀
 colorFrom: yellow
 colorTo: gray
