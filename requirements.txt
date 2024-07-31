@@ -30,4 +30,6 @@ deepspeed
 pycocoevalcap
 torchscale
 gradio
+
 timm==1.0.8
+
