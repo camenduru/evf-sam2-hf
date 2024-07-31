@@ -1,4 +1,5 @@
 packaging
+accelerate
 sentencepiece
 einops==0.4.1
 fastapi==0.100.1
