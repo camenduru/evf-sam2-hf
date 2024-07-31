@@ -1,5 +1,4 @@
 packaging
-timm
 accelerate==0.25.0
 sentencepiece
 einops==0.4.1
@@ -31,5 +30,6 @@ deepspeed
 pycocoevalcap
 torchscale
 gradio
+timm
 
 
