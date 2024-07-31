@@ -5,6 +5,7 @@ from transformers import AutoTokenizer
 import torch
 import numpy as np
 import sys
+import spaces
 
 version = "YxZhang/evf-sam"
 model_type = "ori"
@@ -19,9 +20,10 @@ kwargs = {
     "torch_dtype": torch.half,
 }
 model = EvfSamModel.from_pretrained(version, low_cpu_mem_usage=True,
-                                    **kwargs).cuda().eval()
+                                    **kwargs).eval()
+model.to('cuda')
 
-
+@spaces.GPU
 @torch.no_grad()
 def pred(image_np, prompt):
     original_size_list = [image_np.shape[:2]]
