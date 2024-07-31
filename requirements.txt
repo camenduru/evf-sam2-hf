@@ -1,5 +1,5 @@
 packaging
-timm==1.0.8
+timm
 accelerate==0.25.0
 sentencepiece
 einops==0.4.1
