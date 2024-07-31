@@ -8,7 +8,7 @@ import numpy as np
 import sys
 import os
 from pip._internal import main
-main(['install', 'timm', '--upgrade'])
+main(['install', 'timm==1.0.8'])
 
 version = "YxZhang/evf-sam"
 model_type = "ori"
