@@ -80,6 +80,7 @@ demo = gr.Interface(
               ]],
     title="EVF-SAM: Referring Expression Segmentation",
     description=desc_title_str + desc_link_str,
+    cache_examples=False,
     allow_flagging="never")
 # demo.launch()
-demo.launch(share=False, server_name="0.0.0.0", server_port=10001)
+demo.launch()
