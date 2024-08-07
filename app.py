@@ -2,9 +2,7 @@ import os
 import spaces
 from pip._internal import main
 
-os.system('cd model/segment_anything_2')
-os.system('python setup.py build_ext --inplace')
-os.system('cd ../../')
+os.system('python model/segment_anything_2/setup.py build_ext --inplace')
 
 main(['install', 'timm==1.0.8'])
 import timm
