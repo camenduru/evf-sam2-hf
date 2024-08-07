@@ -32,5 +32,4 @@ torchscale
 gradio
 timm
 torch==2.0.1
-
-
+hydra-core
