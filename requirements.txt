@@ -31,6 +31,6 @@ pycocoevalcap
 torchscale
 gradio
 timm
-torch==2.0.1
+torch
 hydra-core
-# samv2
+samv2
