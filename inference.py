@@ -30,7 +30,7 @@ def parse_args(args):
     parser.add_argument("--local-rank", default=0, type=int, help="node rank")
     parser.add_argument("--load_in_8bit", action="store_true", default=False)
     parser.add_argument("--load_in_4bit", action="store_true", default=False)
-    parser.add_argument("--model_type", default="ori", choices=["ori", "effi"])
+    parser.add_argument("--model_type", default="ori", choices=["ori", "effi", "sam2"])
     parser.add_argument("--image_path", type=str, default="assets/zebra.jpg")
     parser.add_argument("--prompt", type=str, default="zebra top left")
     
@@ -57,7 +57,7 @@ def sam_preprocess(
 
     # Normalize colors
     x = (x - pixel_mean) / pixel_std
-    if model_type=="effi":
+    if model_type=="effi" or model_type=="sam2":
         x = F.interpolate(x.unsqueeze(0), (img_size, img_size), mode="bilinear").squeeze(0)
     else:
         # Pad
@@ -126,6 +126,11 @@ def init_models(args):
     elif args.model_type=="effi":
         from model.evf_effisam import EvfEffiSamModel
         model = EvfEffiSamModel.from_pretrained(
+            args.version, low_cpu_mem_usage=True, **kwargs
+        )
+    elif args.model_type=="sam2":
+        from model.evf_sam2 import EvfSam2Model
+        model = EvfSam2Model.from_pretrained(
             args.version, low_cpu_mem_usage=True, **kwargs
         )
 

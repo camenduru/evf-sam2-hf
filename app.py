@@ -1,7 +1,9 @@
 import spaces
 from pip._internal import main
+
 main(['install', 'timm==1.0.8'])
 import timm
+
 print("installed", timm.__version__)
 import gradio as gr
 from inference import sam_preprocess, beit3_preprocess
@@ -11,6 +13,7 @@ import torch
 import numpy as np
 import sys
 import os
+
 version = "YxZhang/evf-sam"
 model_type = "ori"
 
@@ -26,6 +29,7 @@ kwargs = {
 model = EvfSamModel.from_pretrained(version, low_cpu_mem_usage=True,
                                     **kwargs).eval()
 model.to('cuda')
+
 
 @spaces.GPU
 @torch.no_grad()
@@ -65,8 +69,6 @@ desc = """
 <p>EVF-SAM extends SAM's capabilities with text-prompted segmentation, achieving high accuracy in Referring Expression Segmentation.</p></div>
 <div style='display:flex; gap: 0.25rem; align-items: center'><a href="https://arxiv.org/abs/2406.20076"><img src="https://img.shields.io/badge/arXiv-Paper-red"></a><a href="https://github.com/hustvl/EVF-SAM"><img src="https://img.shields.io/badge/GitHub-Code-blue"></a></div>
 """
-
-
 
 # desc_title_str = '<div align ="center"><img src="assets/logo.jpg" width="20%"><h3> Early Vision-Language Fusion for Text-Prompted Segment Anything Model</h3></div>'
 # desc_link_str = '[![arxiv paper](https://img.shields.io/badge/arXiv-Paper-red)](https://arxiv.org/abs/2406.20076)'
