@@ -6,6 +6,8 @@ from pip._internal import main
 
 main(['install', 'timm==1.0.8'])
 main(['install', 'samv2'])
+main(['install', 'torch==2.1.2'])
+main(['install', 'numpy==1.21.6'])
 
 import timm
 
