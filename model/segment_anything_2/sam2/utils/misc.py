@@ -43,24 +43,25 @@ def get_sdpa_settings():
 
     return old_gpu, use_flash_attn, math_kernel_on
 
+from sam2.utils.misc import get_connected_components
 
-def get_connected_components(mask):
-    """
-    Get the connected components (8-connectivity) of binary masks of shape (N, 1, H, W).
+# def get_connected_components(mask):
+#     """
+#     Get the connected components (8-connectivity) of binary masks of shape (N, 1, H, W).
 
-    Inputs:
-    - mask: A binary mask tensor of shape (N, 1, H, W), where 1 is foreground and 0 is
-            background.
+#     Inputs:
+#     - mask: A binary mask tensor of shape (N, 1, H, W), where 1 is foreground and 0 is
+#             background.
 
-    Outputs:
-    - labels: A tensor of shape (N, 1, H, W) containing the connected component labels
-              for foreground pixels and 0 for background pixels.
-    - counts: A tensor of shape (N, 1, H, W) containing the area of the connected
-              components for foreground pixels and 0 for background pixels.
-    """
-    from model.segment_anything_2.sam2 import _C
+#     Outputs:
+#     - labels: A tensor of shape (N, 1, H, W) containing the connected component labels
+#               for foreground pixels and 0 for background pixels.
+#     - counts: A tensor of shape (N, 1, H, W) containing the area of the connected
+#               components for foreground pixels and 0 for background pixels.
+#     """
+#     from model.segment_anything_2.sam2 import _C
 
-    return _C.get_connected_componnets(mask.to(torch.uint8).contiguous())
+#     return _C.get_connected_componnets(mask.to(torch.uint8).contiguous())
 
 
 def mask_to_box(masks: torch.Tensor):
