@@ -4,7 +4,6 @@ sentencepiece
 einops==0.4.1
 fastapi==0.100.1
 markdown2==2.4.10
-numpy==1.24.2
 openai==0.27.8
 opencv_python==4.8.0.74
 Pillow==9.4.0
@@ -34,4 +33,5 @@ timm
 samv2
 torch
 hydra-core
+numpy==1.21.6
 
