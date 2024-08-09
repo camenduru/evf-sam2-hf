@@ -33,5 +33,5 @@ timm
 samv2
 torch
 hydra-core
-numpy==1.21.6
+# numpy==1.21.6
 
