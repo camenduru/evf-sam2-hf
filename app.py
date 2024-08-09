@@ -1,14 +1,15 @@
 import os
-import spaces
 from pip._internal import main
 
 # os.system('python model/segment_anything_2/setup.py build_ext --inplace')
 
-main(['install', 'timm==1.0.8'])
-main(['install', 'samv2'])
-main(['install', 'torch==2.1.2'])
-main(['install', 'numpy==1.21.6'])
 
+# main(['install', 'timm==1.0.8'])
+# main(['install', 'samv2'])
+# main(['install', 'bitsandbytes', '--upgrade'])
+# main(['install', 'torch==2.1.2'])
+# main(['install', 'numpy==1.21.6'])
+import spaces
 import timm
 
 print("installed", timm.__version__)

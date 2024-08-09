@@ -16,7 +16,7 @@ tqdm==4.64.1
 transformers==4.31.0
 uvicorn==0.23.2
 scipy==1.11.2
-bitsandbytes==0.41.1
+bitsandbytes
 blobfile
 mypy
 pytest
@@ -30,7 +30,8 @@ deepspeed
 pycocoevalcap
 torchscale
 gradio
-timm
+timm==1.0.8
+samv2
 torch
 hydra-core
-# samv2
+
