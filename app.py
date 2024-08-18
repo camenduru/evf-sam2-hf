@@ -5,12 +5,15 @@ from pip._internal import main
 
 
 # main(['install', 'timm==1.0.8'])
+main(['install', 'setuptools==59.8.0'])
 # main(['install', 'samv2'])
-# main(['install', 'bitsandbytes', '--upgrade'])
+main(['install', 'bitsandbytes', '--upgrade'])
+main(['install', 'timm==1.0.8'])
 # main(['install', 'torch==2.1.2'])
 # main(['install', 'numpy==1.21.6'])
 import spaces
 import timm
+import shutil
 
 print("installed", timm.__version__)
 import gradio as gr
@@ -118,15 +121,17 @@ def inference_video(video_path, prompt):
     # save visualization
     video_writer = cv2.VideoWriter("demo_temp/out.mp4", fourcc, 30,
                                    (width, height))
-    pbar = tqdm(input_frames)
-    pbar.set_description("generating video: ")
-    for i, file in enumerate(pbar):
+    # pbar = tqdm(input_frames)
+    # pbar.set_description("generating video: ")
+    for i, file in enumerate(input_frames):
         img = cv2.imread(os.path.join("demo_temp/input_frames", file))
         vis = img + np.array([0, 0, 128]) * output[i][1].transpose(1, 2, 0)
         vis = np.clip(vis, 0, 255)
         vis = np.uint8(vis)
         video_writer.write(vis)
+    shutil.rmtree("demo_temp/input_frames")
     video_writer.release()
+
     return "demo_temp/out.mp4"
 
 
