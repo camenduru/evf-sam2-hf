@@ -15,7 +15,6 @@ tqdm
 transformers==4.31.0
 uvicorn==0.23.2
 scipy==1.11.2
-bitsandbytes
 blobfile
 mypy
 pytest
@@ -32,5 +31,7 @@ gradio
 timm
 torch
 hydra-core
+setuptools==59.8.0'
+bitsandbytes
 # numpy==1.21.6
 
