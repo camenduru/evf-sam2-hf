@@ -136,8 +136,9 @@ def inference_video(video_path, prompt):
 
 
 desc = """
-<div><h3>EVF-SAM: Early Vision-Language Fusion for Text-Prompted Segment Anything Model</h3>
-<p>EVF-SAM extends SAM's capabilities with text-prompted segmentation, achieving high accuracy in Referring Expression Segmentation.</p></div>
+<div><h2>EVF-SAM-2</h2>
+<div><h4>EVF-SAM: Early Vision-Language Fusion for Text-Prompted Segment Anything Model</h4>
+<p>EVF-SAM extends <b>SAM-2</>'s capabilities with text-prompted segmentation, achieving high accuracy in Referring Expression Segmentation.</p></div>
 <div style='display:flex; gap: 0.25rem; align-items: center'><a href="https://arxiv.org/abs/2406.20076"><img src="https://img.shields.io/badge/arXiv-Paper-red"></a><a href="https://github.com/hustvl/EVF-SAM"><img src="https://img.shields.io/badge/GitHub-Code-blue"></a></div>
 """
 
