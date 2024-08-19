@@ -1,6 +1,6 @@
 ---
-title: EVF-SAM
-emoji: 👀
+title: EVF-SAM-2
+emoji: 🚀
 colorFrom: yellow
 colorTo: gray
 sdk: gradio
