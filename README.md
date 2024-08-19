@@ -1,8 +1,8 @@
 ---
 title: EVF-SAM-2
 emoji: 🚀
-colorFrom: yellow
-colorTo: gray
+colorFrom: indigo
+colorTo: green
 sdk: gradio
 sdk_version: 4.37.2
 app_file: app.py
