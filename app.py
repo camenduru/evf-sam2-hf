@@ -126,7 +126,7 @@ def inference_video(video_path, prompt):
     for i, file in enumerate(input_frames):
         img = cv2.imread(os.path.join("demo_temp/input_frames", file))
         #vis = img + np.array([0, 0, 128]) * output[i][1].transpose(1, 2, 0)
-        vis = output[i][1].transpose(1,2,0) * 255
+        vis = img + output[i][1].transpose(1,2,0) * 255
         vis = np.clip(vis, 0, 255)
         vis = np.uint8(vis)
         video_writer.write(vis)
