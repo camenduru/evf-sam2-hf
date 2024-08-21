@@ -94,6 +94,9 @@ def inference_image(image_np, prompt):
 @torch.no_grad()
 @torch.autocast(device_type="cuda", dtype=torch.float16)
 def inference_video(video_path, prompt):
+    cap = cv2.VideoCapture(video_path)
+    fps = cap.get(cv2.CAP_PROP_FPS)
+    cap.release()
 
     os.system("rm -rf demo_temp")
     os.makedirs("demo_temp/input_frames", exist_ok=True)
@@ -119,7 +122,7 @@ def inference_video(video_path, prompt):
         input_ids,
     )
     # save visualization
-    video_writer = cv2.VideoWriter("demo_temp/out.mp4", fourcc, 30,
+    video_writer = cv2.VideoWriter("demo_temp/out.mp4", fourcc, fps, #30,
                                    (width, height))
     # pbar = tqdm(input_frames)
     # pbar.set_description("generating video: ")
