@@ -18,16 +18,8 @@ del image_model.visual_model.memory_attention
 image_model = image_model.eval()
 image_model.to('cuda')
 
-desc = """
-<div><h2>EVF-SAM-2</h2>
-<div><h4>EVF-SAM: Early Vision-Language Fusion for Text-Prompted Segment Anything Model</h4>
-<p>EVF-SAM extends <b>SAM-2</>'s capabilities with text-prompted segmentation, achieving high accuracy in Referring Expression Segmentation.</p></div>
-<div style='display:flex; gap: 0.25rem; align-items: center'><a href="https://arxiv.org/abs/2406.20076"><img src="https://img.shields.io/badge/arXiv-Paper-red"></a><a href="https://github.com/hustvl/EVF-SAM"><img src="https://img.shields.io/badge/GitHub-Code-blue"></a></div>
-"""
-
 @torch.no_grad()
 def inference_image(image_np, prompt):
-    gr.Markdown(desc)
     original_size_list = [image_np.shape[:2]]
     image_beit = beit3_preprocess(image_np, 224).to(dtype=image_model.dtype, device=image_model.device)
     image_sam, resize_shape = sam_preprocess(image_np, model_type=model_type)
@@ -47,7 +39,15 @@ def inference_image(image_np, prompt):
     visualization = np.dstack([image_np, np.where(pred_mask, 255, 0)])
     return visualization / 255.0
 
+desc = """
+<div><h2>EVF-SAM-2</h2>
+<div><h4>EVF-SAM: Early Vision-Language Fusion for Text-Prompted Segment Anything Model</h4>
+<p>EVF-SAM extends <b>SAM-2</>'s capabilities with text-prompted segmentation, achieving high accuracy in Referring Expression Segmentation.</p></div>
+<div style='display:flex; gap: 0.25rem; align-items: center'><a href="https://arxiv.org/abs/2406.20076"><img src="https://img.shields.io/badge/arXiv-Paper-red"></a><a href="https://github.com/hustvl/EVF-SAM"><img src="https://img.shields.io/badge/GitHub-Code-blue"></a></div>
+"""
+
 with gr.Blocks(analytics_enabled=False) as demo:
+    gr.Markdown(desc)
     with gr.Row():
         input_image = gr.Image(type='numpy', label='Input Image', image_mode='RGB')
         output_image = gr.Image(type='numpy', label='Output Image', format='png')
