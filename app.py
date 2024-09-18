@@ -1,3 +1,5 @@
+%cd /content/evf-sam2
+
 import os
 from inference import sam_preprocess, beit3_preprocess
 from model.evf_sam2 import EvfSam2Model
@@ -16,8 +18,16 @@ del image_model.visual_model.memory_attention
 image_model = image_model.eval()
 image_model.to('cuda')
 
+desc = """
+<div><h2>EVF-SAM-2</h2>
+<div><h4>EVF-SAM: Early Vision-Language Fusion for Text-Prompted Segment Anything Model</h4>
+<p>EVF-SAM extends <b>SAM-2</>'s capabilities with text-prompted segmentation, achieving high accuracy in Referring Expression Segmentation.</p></div>
+<div style='display:flex; gap: 0.25rem; align-items: center'><a href="https://arxiv.org/abs/2406.20076"><img src="https://img.shields.io/badge/arXiv-Paper-red"></a><a href="https://github.com/hustvl/EVF-SAM"><img src="https://img.shields.io/badge/GitHub-Code-blue"></a></div>
+"""
+
 @torch.no_grad()
 def inference_image(image_np, prompt):
+    gr.Markdown(desc)
     original_size_list = [image_np.shape[:2]]
     image_beit = beit3_preprocess(image_np, 224).to(dtype=image_model.dtype, device=image_model.device)
     image_sam, resize_shape = sam_preprocess(image_np, model_type=model_type)
@@ -45,4 +55,4 @@ with gr.Blocks(analytics_enabled=False) as demo:
         image_prompt = gr.Textbox(label="Prompt", info="Use a phrase or sentence to describe the object you want to segment. Currently we only support English")
         submit_image = gr.Button(value='Submit', scale=1, variant='primary')
     submit_image.click(fn=inference_image, inputs=[input_image, image_prompt], outputs=output_image)
-demo.launch(share=False, inline=False, debug=True, server_name='0.0.0.0', server_port=2000)
+demo.launch(share=True, inline=False, debug=True)
